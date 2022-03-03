@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, EmailField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, EmailField, IntegerField
 from wtforms.validators import DataRequired
 
 
@@ -18,3 +18,13 @@ class LoginForm(FlaskForm):
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
+
+
+class WorksForm(FlaskForm):
+    """форма добавления работы"""
+    team_leader = IntegerField('Id cap', validators=[DataRequired()])
+    job = StringField('Job', validators=[DataRequired()])
+    work_size = StringField('Work_size', validators=[DataRequired()])
+    collaborators = StringField('Collaborators', validators=[DataRequired()])
+    is_finished = BooleanField('Is_finished', validators=[DataRequired()])
+    submit = SubmitField('Submit')
